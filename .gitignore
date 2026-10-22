@@ -1,0 +1,10 @@
+node_modules/
+release/
+*.zip
+.env
+.env.*
+!.env.example
+.cache/
+.DS_Store
+php-original/storage/*
+!php-original/storage/.gitkeep
