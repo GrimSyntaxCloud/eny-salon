@@ -400,3 +400,65 @@ test("oversized and unknown form actions are rejected", async () => {
     .send({ body: "x".repeat(13000) })
     .expect(413);
 });
+test("password hashing refuses more than two concurrent jobs", async () => {
+  const { hash } = require("../lib/security");
+  const result = await Promise.allSettled([
+    hash("AUniqueDemoPassword12!"),
+    hash("AUniqueDemoPassword13!"),
+    hash("AUniqueDemoPassword14!"),
+  ]);
+  assert.equal(result.filter((x) => x.status === "fulfilled").length, 2);
+  assert.equal(result.find((x) => x.status === "rejected").reason.status, 429);
+});
+test("seed-only prepare does not need database DDL privilege", async () => {
+  let writes = 0;
+  const noDDL = {
+    createIndex: () => {
+      throw new Error("DDL forbidden");
+    },
+    updateOne: async () => {
+      writes++;
+    },
+  };
+  await new Store(noDDL).prepare({ indexes: false });
+  assert.equal(writes, 1);
+});
+
+test("Azure adapter preserves query routes, CSRF cookies, form bodies and sessions", async () => {
+  const handler = require("../azure/handler").createHandler(app);
+  const call = async (method, query, body, cookie) => {
+    const data = body ? new URLSearchParams(body).toString() : "";
+    return handler({
+      url: "https://demo.example/api/site/home" + query,
+      params: { path: "home" },
+      method,
+      headers: new Headers({
+        "x-forwarded-for": "192.0.2.1",
+        ...(body
+          ? {
+              "content-type": "application/x-www-form-urlencoded",
+              "content-length": String(Buffer.byteLength(data)),
+            }
+          : {}),
+        ...(cookie ? { cookie } : {}),
+      }),
+      arrayBuffer: async () => Buffer.from(data),
+    });
+  };
+  const page = await call("GET", "?page=login");
+  assert.equal(page.status, 200);
+  const cookie = String(page.headers["set-cookie"]).split(";")[0];
+  assert.match(cookie, /eny_csrf=/);
+  const result = await call(
+    "POST",
+    "?page=login",
+    { csrf: csrf(page.body), action: "start" },
+    cookie,
+  );
+  assert.equal(result.status, 303);
+  const session = String(result.headers["set-cookie"]).split(";")[0];
+  assert.match(session, /eny_session=/);
+  const admin = await call("GET", "?page=admin", null, cookie + "; " + session);
+  assert.equal(admin.status, 200);
+  assert.match(admin.body, /Alex Rowan/);
+});

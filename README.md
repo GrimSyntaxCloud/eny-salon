@@ -38,7 +38,7 @@ An immutable fictional seed template never expires. Each visitor receives a disp
 
 Storage is bounded to **100 fixed workspace slots**, at most **50 appointments, 100 messages and 100 outbox entries per workspace**, with a 220 KB document limit. Fixed IDs and atomic compare-and-swap enforce capacity and prevent duplicate booking across simultaneous requests. A replacement workspace receives a new generation ID; old sessions cannot access a recycled slot.
 
-Sessions use random tokens with only their SHA-256 hashes stored in the database, HttpOnly/SameSite=Strict cookies and Secure cookies in Azure. Only one session is active per workspace, for at most eight hours and never beyond workspace expiry. Passwords use salted scrypt (`N=65536, r=8, p=2`). CSRF, same-origin checks, server-side validation, output escaping, security headers and request/login limits are enforced.
+Sessions use random tokens with only their SHA-256 hashes stored in the database, HttpOnly/SameSite=Strict cookies and Secure cookies in Azure. Only one session is active per workspace, for at most eight hours and never beyond workspace expiry. Passwords use salted scrypt (`N=65536, r=8, p=2`), with at most two password jobs per warm process to bound memory use. CSRF, same-origin checks, server-side validation, output escaping, security headers and request/login limits are enforced.
 
 ## Run locally
 
@@ -58,7 +58,7 @@ ALLOW_SCHEMA_PREPARE=true node --env-file=.env scripts/prepare-db.js
 npm start
 ```
 
-Never commit `.env` or put a database credential in the frontend. Run schema preparation against Azure only after backup and capacity checks.
+Never commit `.env` or put a database credential in the frontend. Run schema preparation against Azure only after backup and capacity checks. When Azure indexes are already provisioned by the resource owner, add `SKIP_INDEXES=true` to prepare only the immutable seed; the app credential deliberately has no index-management permissions.
 
 ## Verify
 

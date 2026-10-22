@@ -8,8 +8,10 @@ require("../azure/database")
   .connect()
   .then(async ({ store, client }) => {
     try {
-      await store.prepare();
-      console.log("Eny indexes and immutable fictional seed prepared.");
+      await store.prepare({ indexes: process.env.SKIP_INDEXES !== "true" });
+      console.log(
+        "Eny immutable fictional seed prepared; indexes follow SKIP_INDEXES setting.",
+      );
     } finally {
       await client.close();
     }

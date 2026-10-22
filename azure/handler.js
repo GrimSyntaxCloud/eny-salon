@@ -3,7 +3,15 @@ const { connect } = require("./database");
 let pending,
   lastCleanup = 0;
 function createHandler(app) {
-  const wrapped = serverless(app, { provider: "azure" });
+  const wrapped = serverless(app, {
+    provider: "azure",
+    request: (req) => {
+      // Azure's adapter creates an own undefined `ip` property. Let Express
+      // resolve its trusted final proxy hop instead, including IPv6 clients.
+      delete req.ip;
+      req.socket.remoteAddress = "127.0.0.1";
+    },
+  });
   return async (request) => {
     try {
       const rawBody = Buffer.from(await request.arrayBuffer());

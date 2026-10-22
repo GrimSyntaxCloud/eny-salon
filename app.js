@@ -340,7 +340,7 @@ function createApp({ store, secret, secure = false }) {
   app.use((req, res) => res.status(404).send("Not found."));
   app.use((err, req, res, next) => {
     if (res.headersSent) return next(err);
-    const status = err.status === 413 ? 413 : 503;
+    const status = [413, 429].includes(err.status) ? err.status : 503;
     res
       .status(status)
       .type("text")
