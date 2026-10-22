@@ -462,3 +462,19 @@ test("Azure adapter preserves query routes, CSRF cookies, form bodies and sessio
   assert.equal(admin.status, 200);
   assert.match(admin.body, /Alex Rowan/);
 });
+
+test("simultaneous sign-ins keep one durable session slot per workspace", async () => {
+  const ws = await store.createWorkspace();
+  const tokens = await Promise.all(
+    Array.from({ length: 8 }, () => store.createSession(ws)),
+  );
+  assert.equal(await collection.countDocuments({ kind: "session" }), 1);
+  const valid = await Promise.all(tokens.map((token) => store.session(token)));
+  assert.equal(valid.filter(Boolean).length, 1);
+  assert.equal(
+    JSON.stringify(await collection.findOne({ kind: "session" })).includes(
+      tokens[0],
+    ),
+    false,
+  );
+});
