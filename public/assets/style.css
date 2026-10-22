@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Eny Display";
+  src: url("/assets/fonts/BarlowCondensed-Black.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 :root {
   --plum: #30152e;
   --deep: #241022;
@@ -9,7 +16,8 @@
   --muted: #725565;
   --line: #d8bbbf;
   --display:
-    Impact, Haettenschweiler, "Arial Narrow", "Helvetica Neue", sans-serif;
+    "Eny Display", Impact, Haettenschweiler, "Arial Narrow", "Helvetica Neue",
+    sans-serif;
 }
 * {
   box-sizing: border-box;

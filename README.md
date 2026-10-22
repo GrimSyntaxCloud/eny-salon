@@ -34,7 +34,7 @@ Prices remain $14.99 haircut, $9.99 child/senior haircut, $5.99 shampoo, $24.99 
 
 ## Visual design
 
-The hosted edition has its own beauty-studio identity: an oversized ENY masthead, bold condensed system typography, aubergine/peach/rose/butter colors, curved sections and a horizontal care menu. The hair ribbon, mirror and comb are original SVG artwork drawn for this project. All styling and motion use local CSS/SVG with no paid assets, third-party font requests or extra frontend dependencies. Intro motion stops automatically and respects reduced-motion preferences. Public pages, forms and the private staff workspace share the same design system; the preserved PHP edition retains its earlier styling.
+The hosted edition has its own beauty-studio identity: an oversized ENY masthead, self-hosted Barlow Condensed Black display typography, aubergine/peach/rose/butter colors, curved sections and a horizontal care menu. The hair ribbon, mirror and comb are original SVG artwork drawn for this project. All styling and motion use local CSS/SVG with no paid assets, third-party font requests or extra frontend dependencies. The free font is from [Google Fonts / The Barlow Project](https://github.com/google/fonts/tree/main/ofl/barlowcondensed), with its SIL Open Font License included in `public/assets/fonts/OFL-Barlow.txt`; body text uses system fonts. Intro motion stops automatically and respects reduced-motion preferences. Public pages, forms and the private staff workspace share the same design system; the preserved PHP edition retains its earlier styling.
 
 ## Data lifetime and safety
 
