@@ -73,6 +73,7 @@ The integration suite uses disposable MongoDB. It covers server rendering, heade
 ## Azure deployment
 
 - Azure Static Web Apps **Free**, included managed Node.js 22 Functions.
+- MongoDB driver is pinned to 6.21.0 for the existing Cosmos MongoDB 4.2 wire protocol. Dependabot keeps compatible updates visible and excludes driver 7+ until a separately approved database upgrade.
 - Existing Cosmos DB MongoDB API database `portfolio-demos`, collection **`eny_demo`**, sharing the existing database throughput. No dedicated collection throughput is required.
 - Server app settings: `MONGODB_URI` (least-privilege role restricted to this collection), `MONGODB_DATABASE=portfolio-demos`, random `SESSION_SECRET`.
 - Indexes: `{kind:1,expiresAt:1}`, `{kind:1,workspaceId:1,generation:1}`, `{isDemo:1,expiresAt:1}`, plus `_id`.
