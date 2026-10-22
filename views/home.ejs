@@ -1,5 +1,43 @@
-
-<section class="hero"><div class="hero-copy"><p class="eyebrow">GOOD HAIR. GOOD COMPANY.</p><h1>A little change.<br>A whole new<br><em>feeling.</em></h1><p class="intro">A fresh cut, a softer moment, a style that feels like you. Come as you are. Leave a little lighter.</p><div class="actions"><a class="button" href="/?page=book">Make time for you <span>↗</span></a><a class="text-link" href="/?page=services">Explore the care menu</a></div><p class="tiny">Thoughtful haircare. Familiar faces. No rush.</p></div><div class="hero-art" aria-label="Original abstract illustration of flowing hair and salon scissors" role="img"><div class="art-top">THE EVERYDAY<br>FEELS GOOD HERE.</div><svg viewBox="0 0 500 580" aria-hidden="true"><defs><pattern id="lines" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M0 0v22" stroke="#c2a58d" stroke-width="1"/></pattern></defs><path d="M100 500V230C100 25 425 25 425 230v270" fill="#e8d2ba"/><path d="M100 500V230C100 25 425 25 425 230v270" fill="url(#lines)"/><path d="M155 490c-85-143 198-124 95-289-59-94 26-123 90-98M190 510c-85-143 198-124 95-289-59-94 26-123 90-98M225 530c-85-143 198-124 95-289-59-94 26-123 90-98" fill="none" stroke="#8f4e34" stroke-width="26" stroke-linecap="round"/><circle cx="122" cy="370" r="40" fill="#5c6a50"/><path d="M97 368h50m-25-25v50" stroke="#fff3e1" stroke-width="2"/><circle cx="368" cy="419" r="29" fill="none" stroke="#fff7e9" stroke-width="5"/><circle cx="377" cy="486" r="29" fill="none" stroke="#fff7e9" stroke-width="5"/><path d="m349 442-98-9 99 33m-98-33 110 21" stroke="#fff7e9" stroke-width="5" fill="none"/></svg><div class="art-bottom"><span>MADE FOR YOUR<br>MAIN CHARACTER MOMENT.</span><span class="sun">✳</span></div><div class="stamp">A LITTLE<br>SELF-CARE<br>GOES A LONG WAY</div></div></section>
-<div class="ticker"><span>GOOD ENERGY</span><b>✳</b><span>GREAT HAIR</span><b>✳</b><span>YOUR KIND OF PLACE</span><b>✳</b><span>GOOD ENERGY</span></div>
-<section class="section"><div class="section-heading"><p class="eyebrow">SMALL RITUALS. BIG DIFFERENCE.</p><h2>Your next good<br><em>hair day.</em></h2><a class="text-link" href="/?page=services">All services ↗</a></div><div class="service-grid"><% Object.entries(SERVICES).slice(0,3).forEach(([name,price],i)=> { %><a class="service-card" href="/?page=book"><span class="number">0<%= i+1 %></span><h3><%= name %></h3><p><%= ['A clean slate. A confident finish.','Care for every chapter of life.','A soothing reset for your hair.'][i] %></p><strong>$<%= price.toFixed(2) %></strong><span class="arrow">↗</span></a><% }); %></div></section>
-<section class="quote"><span>✳</span><h2>More than a chair.<br><em>A place to feel like yourself.</em></h2><a class="button light" href="/?page=about">Meet your new favorite place ↗</a></section>
+<section class="studio-hero" aria-labelledby="hero-heading">
+  <div class="hero-topline"><span>GOOD HAIR. GOOD COMPANY.</span><span>COME AS YOU ARE ↘</span></div>
+  <div class="sculpture-stage">
+    <div class="giant-wordmark" aria-hidden="true">ENY</div>
+    <div class="hair-sculpture" role="img" aria-label="Original sculptural illustration: a flowing peach ribbon of hair, a curved comb and a rose-colored salon mirror">
+      <svg viewBox="0 0 680 550" aria-hidden="true">
+        <defs>
+          <linearGradient id="mirror" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ebb0cf"/><stop offset=".4" stop-color="#f8d3c4"/><stop offset=".73" stop-color="#ba6f9b"/><stop offset="1" stop-color="#6a3457"/></linearGradient>
+          <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2=".8"><stop stop-color="#d96c72"/><stop offset=".3" stop-color="#f5b49a"/><stop offset=".52" stop-color="#ffe4b9"/><stop offset=".71" stop-color="#e08b80"/><stop offset="1" stop-color="#af4c69"/></linearGradient>
+          <linearGradient id="comb" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0a9"/><stop offset="1" stop-color="#e1af62"/></linearGradient>
+          <radialGradient id="shine"><stop stop-color="#fff6dc" stop-opacity=".9"/><stop offset="1" stop-color="#fff6dc" stop-opacity="0"/></radialGradient>
+          <filter id="shadow"><feDropShadow dx="0" dy="20" stdDeviation="17" flood-color="#160b17" flood-opacity=".45"/></filter>
+        </defs>
+        <ellipse cx="350" cy="503" rx="210" ry="20" fill="#160b17" opacity=".3"/>
+        <g class="mirror-form" transform="rotate(14 405 250)">
+          <rect x="262" y="38" width="253" height="389" rx="126" fill="#60304f"/>
+          <rect x="272" y="46" width="232" height="367" rx="116" fill="url(#mirror)" stroke="#f5c5d1" stroke-width="2"/>
+          <ellipse cx="372" cy="121" rx="97" ry="87" fill="url(#shine)"/>
+          <path d="m320 362 135-223m-130 119 86-140" stroke="#ffe8df" stroke-opacity=".45" stroke-width="3"/>
+        </g>
+        <g class="ribbon-form" filter="url(#shadow)">
+          <path d="M216 447C385 472 436 377 320 321C160 245 178 171 293 116C366 81 391 66 373 32" fill="none" stroke="#8a3e60" stroke-width="83" stroke-linecap="round"/>
+          <path d="M214 433C383 458 434 363 318 307C158 231 176 157 291 102C364 67 389 52 371 18" fill="none" stroke="url(#ribbon)" stroke-width="76" stroke-linecap="round"/>
+          <path d="M201 413C362 444 408 368 304 321C153 253 147 164 279 92C333 62 356 44 352 22" fill="none" stroke="#ffe3bb" stroke-width="3" stroke-linecap="round" opacity=".65"/>
+          <path d="M234 454C400 460 452 366 334 301C202 231 208 176 311 126C383 91 410 59 395 23" fill="none" stroke="#a84464" stroke-width="3" opacity=".45"/>
+        </g>
+        <g class="comb-form" transform="translate(416 328) rotate(-29)">
+          <rect width="176" height="36" rx="18" fill="url(#comb)"/>
+          <path d="M15 28v99m18-99v99m18-99v99m18-99v99m18-99v99m18-99v99m18-99v99m18-99v99m18-99v99" stroke="url(#comb)" stroke-width="10" stroke-linecap="round"/>
+          <path d="M21 10h133" stroke="#fff5c5" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <path d="M126 140c0 33-11 44-44 44 33 0 44 11 44 44 0-33 11-44 44-44-33 0-44-11-44-44Z" fill="#f7e59f"/>
+        <path d="M542 96c0 20-7 27-27 27 20 0 27 7 27 27 0-20 7-27 27-27-20 0-27-7-27-27Z" fill="#f8b39b"/>
+      </svg>
+    </div>
+    <div class="studio-seal"><span>A LITTLE<br>SELF-CARE.<br>A BIG MOOD.</span><b aria-hidden="true">✳</b></div>
+    <p class="stage-caption">HAIR, WITH A<br>LITTLE MORE HEART.</p>
+  </div>
+  <div class="hero-bottom"><h1 id="hero-heading">A LITTLE CHANGE.<br><span>A WHOLE NEW FEELING.</span></h1><div class="hero-intro"><p>A fresh cut. A softer moment. A style that feels like you. Come as you are. Leave a little lighter.</p><a class="button butter" href="/?page=book">Make time for you <span aria-hidden="true">↗</span></a></div></div>
+</section>
+<section class="care-band" aria-labelledby="care-heading"><div class="care-intro"><p class="eyebrow">SMALL RITUALS. BIG DIFFERENCE.</p><h2 id="care-heading">THE GOOD<br>HAIR MENU<span aria-hidden="true">✳</span></h2><p>Thoughtful haircare.<br>Familiar faces. No rush.</p></div><div class="service-rows"><% Object.entries(SERVICES).slice(0,3).forEach(([name,price],i)=> { %><a class="service-row" href="/?page=book"><span class="number">0<%= i+1 %></span><div><h3><%= name %></h3><p><%= ['A clean slate. A confident finish.','Care for every chapter of life.','A soothing reset for your hair.'][i] %></p></div><span class="service-price">$<%= price.toFixed(2) %></span><span class="round-arrow" aria-hidden="true">↗</span></a><% }); %><a class="text-link" href="/?page=services">Explore the full care menu ↗</a></div></section>
+<section class="studio-story"><p class="eyebrow">YOUR KIND OF PLACE</p><div class="story-statement"><span class="petal-mark" aria-hidden="true">✿</span><h2>MORE THAN<br>A CHAIR.<br><span>A FEELING.</span></h2></div><div class="story-bottom"><p>A place to feel like yourself.<br>Good energy. Great hair. A little more you.</p><a class="button" href="/?page=about">Meet your new favorite place <span aria-hidden="true">↗</span></a></div></section>
+<section class="last-call"><p>YOUR NEXT GOOD HAIR DAY STARTS HERE.</p><a href="/?page=book">TAKE A SEAT <span aria-hidden="true">↗</span></a><span class="tiny">A fictional salon. A real booking workflow. Your own private demo.</span></section>

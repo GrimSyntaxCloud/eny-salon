@@ -2,7 +2,7 @@
 
 A fictional salon demo restored from Andres’s PHP coursework. Browse services, reserve an appointment, edit a customer’s booking and manage the salon’s availability in your own private workspace.
 
-The hosted edition keeps the cream/copper/sage design and the original feature intent, using **Node.js 22, Express, EJS and a real MongoDB-compatible database**. The restored PHP + SQLite edition is preserved in [`php-original/`](php-original/) for source history and local PHP study. It is not deployed as PHP to Azure Static Web Apps.
+The hosted edition pairs an aubergine/peach beauty-studio design with the original feature intent, using **Node.js 22, Express, EJS and a real MongoDB-compatible database**. The restored PHP + SQLite edition is preserved in [`php-original/`](php-original/) for source history and local PHP study. It is not deployed as PHP to Azure Static Web Apps.
 
 ## Explore the demo
 
@@ -31,6 +31,10 @@ Each visitor gets separate records. There is no public password granting access 
 | Restored PHP/SQLite implementation                | Preserved in `php-original/`, not mislabeled as the hosted runtime |
 
 Prices remain $14.99 haircut, $9.99 child/senior haircut, $5.99 shampoo, $24.99 style and $6.99 trim.
+
+## Visual design
+
+The hosted edition has its own beauty-studio identity: an oversized ENY masthead, bold condensed system typography, aubergine/peach/rose/butter colors, curved sections and a horizontal care menu. The hair ribbon, mirror and comb are original SVG artwork drawn for this project. All styling and motion use local CSS/SVG with no paid assets, third-party font requests or extra frontend dependencies. Intro motion stops automatically and respects reduced-motion preferences. Public pages, forms and the private staff workspace share the same design system; the preserved PHP edition retains its earlier styling.
 
 ## Data lifetime and safety
 
