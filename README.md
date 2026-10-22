@@ -6,6 +6,8 @@ The hosted edition keeps the cream/copper/sage design and the original feature i
 
 ## Explore the demo
 
+[Open the live demo](https://zealous-grass-00a9b990f.3.azurestaticapps.net/) · [Source repository](https://github.com/GrimSyntaxCloud/eny-salon)
+
 1. Use **Find your moment** to book with fictional details. A private workspace is created for you.
 2. Open **Staff workspace → Open a private demo** to explore the calendar, sample appointment, editing and messages.
 3. Optionally save a fictional workspace name and a unique password to revisit it after signing out. Without saved sign-in details, signing out loses access to that workspace.
